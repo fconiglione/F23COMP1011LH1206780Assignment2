@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f23comp1011lh1206780assignment2.MusicSearchController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -35,7 +34,7 @@
                <children>
                   <HBox spacing="15.0">
                      <children>
-                        <TextField fx:id="musicSearchTextField" prefHeight="25.0" prefWidth="221.0" text="Search by tracks, albums, or artists" />
+                        <TextField fx:id="musicSearchTextField" prefHeight="25.0" prefWidth="221.0" promptText="Search by tracks, albums, or artists" />
                         <Button mnemonicParsing="false" onAction="#searchMusicButton" text="Search" />
                      </children>
                   </HBox>

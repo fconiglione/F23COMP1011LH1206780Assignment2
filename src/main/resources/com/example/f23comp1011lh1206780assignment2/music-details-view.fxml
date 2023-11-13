@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.f23comp1011lh1206780assignment2.MusicDetailsController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f23comp1011lh1206780assignment2.MusicDetailsController">
+   <children>
+      <VBox alignment="CENTER_LEFT" prefHeight="600.0" prefWidth="800.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="songNameLabel" text="songName">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <HBox spacing="30.0">
+               <children>
+                  <ImageView fx:id="musicImageVIew" fitHeight="258.0" fitWidth="432.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/spotify-music-placeholder.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" spacing="30.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="30.0">
+                           <children>
+                              <VBox spacing="15.0">
+                                 <children>
+                                    <Label text="Track:" />
+                                    <Label text="Album:" />
+                                    <Label text="Artist:" />
+                                    <Label text="Release Date:" />
+                                 </children>
+                              </VBox>
+                              <VBox spacing="15.0">
+                                 <children>
+                                    <Label fx:id="trackNameLabel" text="trackName" />
+                                    <Label fx:id="albumNameLabel" text="albumName" />
+                                    <Label fx:id="artistNameLabel" text="artistName" />
+                                    <Label fx:id="releaseDateLabel" text="releaseDate" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#playOnSpotifyButton" text="Play on Spotify" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#goBackButton" text="Go Back" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="100.0" right="100.0" top="30.0" />
+   </padding>
 </AnchorPane>
