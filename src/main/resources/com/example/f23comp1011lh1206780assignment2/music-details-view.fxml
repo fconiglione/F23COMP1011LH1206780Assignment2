@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.f23comp1011lh1206780assignment2.MusicDetailsView"
+            fx:controller="com.example.f23comp1011lh1206780assignment2.MusicDetailsController"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
