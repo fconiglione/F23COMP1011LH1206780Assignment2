@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f23comp1011lh1206780assignment2.MusicDetailsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f23comp1011lh1206780assignment2.MusicDetailsController">
    <children>
       <VBox alignment="CENTER_LEFT" prefHeight="600.0" prefWidth="800.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -49,12 +49,12 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#playOnSpotifyButton" text="Play on Spotify" />
+                        <Button id="btn" mnemonicParsing="false" onAction="#playOnSpotifyButton" text="Play on Spotify" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#goBackButton" text="Go Back" />
+            <Button id="rtn-btn" mnemonicParsing="false" onAction="#goBackButton" text="Go Back" />
          </children>
       </VBox>
    </children>

@@ -1,0 +1,31 @@
+.root {
+    -fx-font-size: 16px;
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-background-color: #000000;
+    -fx-background-size: cover;
+}
+#results-label {
+    -fx-font-size: 12px;
+}
+#hint {
+    -fx-text-fill: #D32F2F;
+}
+.label {
+    -fx-text-fill: #f4f4f4;
+}
+#btn {
+    -fx-background-color: #1db954;
+    -fx-text-fill: #f4f4f4;
+    -fx-font-weight: 700;
+}
+#rtn-btn {
+    -fx-background-color: #D32F2F;
+    -fx-text-fill: #f4f4f4;
+    -fx-font-weight: 700;
+}
+#btn:hover {
+    -fx-background-color: #25d865;
+}
+#rtn-btn:hover {
+    -fx-background-color: #FF5252;
+}
