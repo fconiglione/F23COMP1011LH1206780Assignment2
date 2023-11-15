@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
+
 public class MusicDetailsController {
 
     @FXML
@@ -26,8 +28,8 @@ public class MusicDetailsController {
     private Label trackNameLabel;
 
     @FXML
-    void goBackButton(ActionEvent event) {
-
+    void goBackButton(ActionEvent event) throws IOException {
+        SceneChanger.changeScenes(event, "music-search-view.fxml");
     }
 
     @FXML

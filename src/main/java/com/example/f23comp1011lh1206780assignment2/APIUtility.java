@@ -18,43 +18,6 @@ public class APIUtility {
     private static final String CLIENT_ID = "c202326fc3044e88b9241398217d8d7b";
     private static final String CLIENT_SECRET = "2442051c40d34b8a9cb6410644b5250e";
 
-    public static void main(String[] args) {
-        // Obtain an access token using client credentials flow
-        String accessToken = getAccessToken();
-
-        // Search for the term "godzilla" and print details of the track
-        String searchTerm = "godzilla";
-        APIResponse apiResponse = searchForTrack(accessToken, searchTerm);
-
-        Item track = apiResponse.getTracks().getItems().get(0);
-
-        System.out.println("Search Results: ");
-        System.out.println("Album Name: " + track.getAlbum().getName());
-
-        // Check if artists list is not empty
-        if (!track.getArtists().isEmpty()) {
-            System.out.println("Artist Name: " + track.getArtists().get(0).getName());
-        } else {
-            System.out.println("Artist Name: N/A");
-        }
-
-        // Check if externalUrls is not null
-        if (track.getExternalUrls() != null) {
-            System.out.println("Song URL: " + track.getExternalUrls().getSpotify());
-        } else {
-            System.out.println("Song URL: N/A");
-        }
-
-        // Check if album images list is not empty
-        if (!track.getAlbum().getImages().isEmpty()) {
-            System.out.println("Album Cover URL: " + track.getAlbum().getImages().get(0).getUrl());
-        } else {
-            System.out.println("Album Cover URL: N/A");
-        }
-
-        System.out.println("Release Date: " + track.getAlbum().getReleaseDate());
-    }
-
     /**
      * This method retrieves the access token from the Spotify API, using the Client Id and Client Secret
      * declared above - this is necessary because the Spotify API expires tokens after some time, and thus,
@@ -62,7 +25,7 @@ public class APIUtility {
      * Referenced from: https://stackoverflow.com/questions/69576906/retrieve-access-token-from-server-with-java-httpclient-using-client-credentials
      * @return
      */
-    private static String getAccessToken() {
+    static String getAccessToken() {
         try {
             URL url = new URL("https://accounts.spotify.com/api/token");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -103,10 +66,11 @@ public class APIUtility {
      * @param searchTerm
      * @return
      */
-    private static APIResponse searchForTrack(String accessToken, String searchTerm) {
+    static APIResponse searchForTrack(String accessToken, String searchTerm) {
         try {
             HttpClient httpClient = HttpClient.newHttpClient();
-            String apiUrl = "https://api.spotify.com/v1/search?q=" + searchTerm + "&type=track&limit=1";
+            // Had to add an API request limit of 50 results as this is the maximum allowed by Spotify
+            String apiUrl = "https://api.spotify.com/v1/search?q=" + searchTerm + "&type=track&limit=50";
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(apiUrl))
