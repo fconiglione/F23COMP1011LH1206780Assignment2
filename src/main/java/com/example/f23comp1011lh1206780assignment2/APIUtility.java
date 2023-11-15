@@ -67,6 +67,8 @@ public class APIUtility {
      * @return
      */
     static APIResponse searchForTrack(String accessToken, String searchTerm) {
+        // added this line to allow for searches with spaces (i.e. "Katy Perry")
+        searchTerm = searchTerm.replaceAll(" ","%20");
         try {
             HttpClient httpClient = HttpClient.newHttpClient();
             // Had to add an API request limit of 50 results as this is the maximum allowed by Spotify
