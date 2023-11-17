@@ -4,12 +4,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +26,8 @@ public class MusicSearchController implements Initializable {
 
     @FXML
     private Label resultsLabel;
+    @FXML
+    private Button viewDetailsButton;
 
     @FXML
     void searchMusicButton(ActionEvent event) {
@@ -49,8 +52,23 @@ public class MusicSearchController implements Initializable {
         }
     }
 
+    @FXML
+    void viewDetailsButtonMethod(ActionEvent event) throws IOException {
+        SceneChanger.changeScenes(event, "music-details-view.fxml");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        viewDetailsButton.setVisible(false);
 
+        musicListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>() {
+            @Override
+            public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
+                if (newValue != null)
+                    viewDetailsButton.setVisible(true);
+                else
+                    viewDetailsButton.setVisible(false);
+            }
+        });
     }
 }
