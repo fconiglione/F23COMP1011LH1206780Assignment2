@@ -5,6 +5,10 @@ public class Image {
     private String url;
     private int width;
 
+    public Image(String url) {
+        this.url = url;
+    }
+
     public int getHeight() {
         return height;
     }

@@ -54,7 +54,26 @@ public class MusicSearchController implements Initializable {
 
     @FXML
     void viewDetailsButtonMethod(ActionEvent event) throws IOException {
-        SceneChanger.changeScenes(event, "music-details-view.fxml");
+        Item selectedItem = musicListView.getSelectionModel().getSelectedItem();
+
+        if (selectedItem != null) {
+            // FXMLLoader and scene creation
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("music-details-view.fxml"));
+            Parent parent = fxmlLoader.load();
+
+            // Access the controller of the new scene and set the item details
+            if (fxmlLoader.getController() instanceof MusicDetailsController) {
+                MusicDetailsController controller = fxmlLoader.getController();
+                controller.setItemDetails(selectedItem);
+            }
+
+            Scene scene = new Scene(parent);
+
+            // Stage setting
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @Override
