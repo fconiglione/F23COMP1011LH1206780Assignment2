@@ -34,21 +34,21 @@
                <children>
                   <HBox spacing="15.0">
                      <children>
-                        <TextField fx:id="musicSearchTextField" prefHeight="35.0" prefWidth="271.0" promptText="Search by tracks, albums, or artists" />
+                        <TextField fx:id="musicSearchTextField" prefHeight="35.0" prefWidth="271.0" promptText="Search by name, album, or artist" />
                         <Button id="btn" mnemonicParsing="false" onAction="#searchMusicButton" text="Search" />
                      </children>
                   </HBox>
                   <ListView fx:id="musicListView" prefHeight="200.0" prefWidth="200.0" />
-                  <HBox alignment="CENTER" spacing="500.0">
+                  <HBox alignment="CENTER" spacing="450.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="119.0" spacing="15.0">
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="171.0" spacing="15.0">
                            <children>
-                              <Label text="Results:">
+                              <Label prefHeight="17.0" prefWidth="53.0" text="Results:">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label id="results-label" fx:id="resultsLabel" prefHeight="25.0" prefWidth="43.0" text="N/A" />
+                              <Label id="results-label" fx:id="resultsLabel" prefHeight="25.0" prefWidth="94.0" text="N/A" />
                            </children>
                         </HBox>
                         <Button id="btn" fx:id="viewDetailsButton" mnemonicParsing="false" onAction="#viewDetailsButtonMethod" text="View Details" />

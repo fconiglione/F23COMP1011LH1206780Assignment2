@@ -12,6 +12,10 @@ public class NoResultsItem extends Item {
         this.message = message;
     }
 
+    /**
+     * overriding with a toString to display the no results found message
+     * @return
+     */
     @Override
     public String toString() {
         return message;

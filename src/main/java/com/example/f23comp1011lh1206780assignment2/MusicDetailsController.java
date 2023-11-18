@@ -7,12 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.spi.InetAddressResolver;
-import java.util.List;
+import java.awt.Desktop;
 import java.util.ResourceBundle;
 
-public class MusicDetailsController implements Initializable {
+public class MusicDetailsController {
 
     @FXML
     private Label albumNameLabel;
@@ -31,9 +32,14 @@ public class MusicDetailsController implements Initializable {
 
     @FXML
     private Label trackNameLabel;
-
+    // Declaring a music item for passing through JSON data
     private Item musicItem;
 
+    /**
+     * This method retrieves data from the selected song/item from the previous screen's listView
+     * Referenced from Jaret Wright on YT: https://www.youtube.com/watch?v=Wc1a2KshJ4w
+     * @param item
+     */
     public void setItemDetails(Item item) {
         this.musicItem = item;
         songNameLabel.setText(item.getName());
@@ -57,17 +63,26 @@ public class MusicDetailsController implements Initializable {
         }
     }
 
+    /**
+     * This method changes scenes back to the search screen when the back button is clicked
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void goBackButton(ActionEvent event) throws IOException {
         SceneChanger.changeScenes(event, "music-search-view.fxml");
     }
 
+    /**
+     * This method opens the spotify song's album in a new browser window when the button is clicked
+     * @throws URISyntaxException
+     * @throws IOException
+     */
     @FXML
-    void playOnSpotifyButton(ActionEvent event) {
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    void playOnSpotifyButton() throws URISyntaxException, IOException {
+        String spotifyUrl = musicItem.getExternalUrls().getSpotify();
+        // Opening the spotifyUrl in the default browser as a bonus
+        // Referenced from: https://stackoverflow.com/questions/5226212/how-to-open-url-in-default-webbrowser-using-java
+        Desktop.getDesktop().browse(new URI(spotifyUrl));
     }
 }

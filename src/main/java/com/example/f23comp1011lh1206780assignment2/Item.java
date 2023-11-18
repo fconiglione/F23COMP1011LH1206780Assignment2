@@ -7,25 +7,42 @@ public class Item {
     private List<Artist> artists;
     private String name;
 
+    /**
+     * returns song/item name
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * returns song/item album
+     * @return
+     */
     public Album getAlbum() {
         return album;
     }
 
+    /**
+     * returns a list of artists from the song/item
+     * @return
+     */
     public List<Artist> getArtists() {
         return artists;
     }
 
+    /**
+     * returns  externalUrls, specifically the spotify song url, from the item/song
+     * @return
+     */
     public ExternalUrls getExternalUrls() {
-        if (album != null) {
             return album.getExternalUrls();
-        }
-        return null;
     }
 
+    /**
+     * toString method to display items/songs in a listView with a professional format
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -34,7 +51,7 @@ public class Item {
 
         sb.append(" | ").append(album.getName());
 
-        if (!artists.isEmpty()) {
+        if (!artists.isEmpty()) { // making sure artists exist before calling for them
             sb.append(" | ").append(artists.get(0).getName());
         }
 

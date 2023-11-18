@@ -9,6 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneChanger {
+    /**
+     * The sole purpose for this class, referenced from other COMP1011 projects, is to switch between
+     * scenes on the click of a button
+     * @param event
+     * @param fxmlFileName
+     * @throws IOException
+     */
     public static void changeScenes(ActionEvent event, String fxmlFileName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlFileName));
         Scene scene = new Scene(fxmlLoader.load());

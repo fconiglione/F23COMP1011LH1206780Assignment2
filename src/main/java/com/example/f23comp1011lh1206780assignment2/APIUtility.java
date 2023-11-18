@@ -15,6 +15,7 @@ import java.net.http.HttpResponse;
 import java.util.Base64;
 
 public class APIUtility {
+    // Declaring ClientID and ClientSecret to be referenced
     private static final String CLIENT_ID = "c202326fc3044e88b9241398217d8d7b";
     private static final String CLIENT_SECRET = "2442051c40d34b8a9cb6410644b5250e";
 

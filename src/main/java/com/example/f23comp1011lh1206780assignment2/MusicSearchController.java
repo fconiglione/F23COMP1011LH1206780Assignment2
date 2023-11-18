@@ -29,8 +29,12 @@ public class MusicSearchController implements Initializable {
     @FXML
     private Button viewDetailsButton;
 
+    /**
+     * This method triggers an API response and populates the listView with
+     * a number of corresponding songs/items
+     */
     @FXML
-    void searchMusicButton(ActionEvent event) {
+    void searchMusicButton() {
         // Getting a new access token by referencing the same method in APIUtility
         String accessToken = APIUtility.getAccessToken();
 
@@ -44,7 +48,7 @@ public class MusicSearchController implements Initializable {
 
         if (!apiResponse.getTracks().getItems().isEmpty()) {
             musicListView.getItems().addAll(apiResponse.getTracks().getItems());
-            resultsLabel.setText(String.valueOf(apiResponse.getTracks().getItems().size()));
+            resultsLabel.setText((apiResponse.getTracks().getItems().size()) + " of " + (apiResponse.getTracks().getTotal()));
         } else {
             // Providing a "No results found" scenario if there are no results from the search query
             musicListView.getItems().add(new NoResultsItem("No results found"));
@@ -52,8 +56,15 @@ public class MusicSearchController implements Initializable {
         }
     }
 
+    /**
+     * This method uses the selected listView item/song and switches into a more detailed
+     * fxml screen where the user can view more information about the item/song
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void viewDetailsButtonMethod(ActionEvent event) throws IOException {
+        // Identifying the selected song
         Item selectedItem = musicListView.getSelectionModel().getSelectedItem();
 
         if (selectedItem != null) {
@@ -61,7 +72,7 @@ public class MusicSearchController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("music-details-view.fxml"));
             Parent parent = fxmlLoader.load();
 
-            // Access the controller of the new scene and set the item details
+            // Accessing the controller of the new scene and set the item details
             if (fxmlLoader.getController() instanceof MusicDetailsController) {
                 MusicDetailsController controller = fxmlLoader.getController();
                 controller.setItemDetails(selectedItem);
@@ -76,10 +87,17 @@ public class MusicSearchController implements Initializable {
         }
     }
 
+    /**
+     * the initialize method is mainly being used to display and hide the view details button when
+     * an item/song is selected from the listView
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         viewDetailsButton.setVisible(false);
 
+        // Referenced from in-class exercise "SearchMoviesController"
         musicListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>() {
             @Override
             public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
